@@ -1,3 +1,31 @@
+// ---- O mu Bu mu ----
+const BU_MU_SU_MU_PAIRS = [
+  { a: "Pizza", b: "Burger" },
+  { a: "Deniz", b: "Dağ" },
+  { a: "Sabah insanı", b: "Gece kuşu" },
+  { a: "Kahve", b: "Çay" },
+  { a: "Sinema", b: "Dizi gecesi" },
+  { a: "Yaz", b: "Kış" },
+  { a: "Köpek", b: "Kedi" },
+  { a: "Kitap", b: "Film" },
+  { a: "Şehir hayatı", b: "Doğa hayatı" },
+  { a: "Planlı tatil", b: "Rastgele gezi" },
+  { a: "Ev yemeği", b: "Dışarıda yemek" },
+  { a: "Mesajlaşmak", b: "Telefonda konuşmak" },
+  { a: "Erken kalkmak", b: "Geç kalkmak" },
+  { a: "Tatlı", b: "Tuzlu" },
+  { a: "Yürüyüş", b: "Bisiklet" },
+  { a: "Konser", b: "Tiyatro" },
+  { a: "Kamp", b: "Otel" },
+  { a: "Ev partisi", b: "Dışarı çıkmak" },
+  { a: "El yazısı mektup", b: "Mesaj" },
+  { a: "Sürpriz plan", b: "Planlı organizasyon" },
+  { a: "Balkon manzarası", b: "Deniz manzarası" },
+  { a: "Piknik", b: "Restoran" },
+  { a: "Yıldızları izlemek", b: "Şehir ışıkları" },
+  { a: "Sessiz bir akşam", b: "Kalabalık bir davet" },
+];
+
 // ---- Çift Oyunu (Doğruluk mu Cesaret mi) ----
 const TRUTH_QUESTIONS = [
   "İlk kez benden ne zaman hoşlandığını fark ettin?",

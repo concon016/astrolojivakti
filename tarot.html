@@ -23,6 +23,7 @@
       <a href="tarot.html" class="active">Tarot</a>
       <a href="sevgi-dili.html">Sevgi Dili</a>
       <a href="cift-oyunu.html">Çift Oyunu</a>
+      <a href="bu-mu-su-mu.html">O mu Bu mu?</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü">
       <span></span><span></span><span></span>
@@ -39,6 +40,7 @@
     <a href="tarot.html" class="active">Tarot</a>
     <a href="sevgi-dili.html">Sevgi Dili</a>
     <a href="cift-oyunu.html">Çift Oyunu</a>
+      <a href="bu-mu-su-mu.html">O mu Bu mu?</a>
   </div>
 </header>
 
@@ -54,18 +56,24 @@
 
   <section>
     <div class="section-inner" style="text-align:center">
-      <div class="tarot-grid" id="tarotGrid">
-        <div class="tarot-slot" data-label="Geçmiş">
+      <div class="game-tabs" id="categoryTabs">
+        <button class="game-tab" data-cat="gunluk">Günlük</button>
+        <button class="game-tab" data-cat="ask">Aşk</button>
+        <button class="game-tab" data-cat="kariyer">Kariyer</button>
+      </div>
+
+      <div class="tarot-grid" id="tarotGrid" style="margin-top:32px">
+        <div class="tarot-slot">
           <div class="tarot-card" id="card0"><span class="tarot-back">✦</span></div>
-          <span class="tarot-slot-label">Geçmiş</span>
+          <span class="tarot-slot-label" id="slotLabel0">Geçmiş</span>
         </div>
-        <div class="tarot-slot" data-label="Şimdi">
+        <div class="tarot-slot">
           <div class="tarot-card" id="card1"><span class="tarot-back">✦</span></div>
-          <span class="tarot-slot-label">Şimdi</span>
+          <span class="tarot-slot-label" id="slotLabel1">Şimdi</span>
         </div>
-        <div class="tarot-slot" data-label="Gelecek">
+        <div class="tarot-slot">
           <div class="tarot-card" id="card2"><span class="tarot-back">✦</span></div>
-          <span class="tarot-slot-label">Gelecek</span>
+          <span class="tarot-slot-label" id="slotLabel2">Gelecek</span>
         </div>
       </div>
 
@@ -87,13 +95,37 @@
 <script src="data.js"></script>
 <script src="script.js"></script>
 <script>
+const LABEL_SETS = {
+  gunluk: ["Geçmiş", "Şimdi", "Gelecek"],
+  ask: ["Geçmiş İlişkin", "Şu Anki Duyguların", "Aşk Hayatının Geleceği"],
+  kariyer: ["Geçmiş Emeğin", "Şu Anki Durumun", "Kariyer Geleceğin"],
+};
+
   const cards = [document.getElementById("card0"), document.getElementById("card1"), document.getElementById("card2")];
   const drawBtn = document.getElementById("drawBtn");
   const resultCard = document.getElementById("resultCard");
   const resultContent = document.getElementById("resultContent");
   const shareBtn = document.getElementById("shareBtn");
-  const labels = ["Geçmiş", "Şimdi", "Gelecek"];
+  const slotLabelEls = [document.getElementById("slotLabel0"), document.getElementById("slotLabel1"), document.getElementById("slotLabel2")];
+  const categoryTabs = document.getElementById("categoryTabs");
+  let currentCategory = "gunluk";
+  let labels = LABEL_SETS.gunluk;
   let currentShareText = "";
+
+  function setCategory(cat) {
+    currentCategory = cat;
+    labels = LABEL_SETS[cat];
+    slotLabelEls.forEach((el, i) => (el.textContent = labels[i]));
+    categoryTabs.querySelectorAll(".game-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.cat === cat);
+    });
+  }
+
+  categoryTabs.querySelectorAll(".game-tab").forEach((btn) => {
+    btn.addEventListener("click", () => setCategory(btn.dataset.cat));
+  });
+
+  setCategory("gunluk");
 
   function drawThreeCards() {
     const deckCopy = [...TAROT_DECK];
@@ -137,7 +169,7 @@
         .join("");
 
       currentShareText =
-        "Tarot açılımım — Geçmiş: " + drawn[0].name + ", Şimdi: " + drawn[1].name + ", Gelecek: " + drawn[2].name;
+        "Tarot açılımım — " + labels[0] + ": " + drawn[0].name + ", " + labels[1] + ": " + drawn[1].name + ", " + labels[2] + ": " + drawn[2].name;
 
       resultCard.classList.add("visible");
       resultCard.scrollIntoView({ behavior: "smooth", block: "nearest" });

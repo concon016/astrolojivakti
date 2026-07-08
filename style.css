@@ -525,3 +525,131 @@ section { padding: 60px 24px 80px; position: relative; z-index: 1; }
 @media (max-width: 640px) {
   .tarot-card { width: 100px; height: 160px; font-size: 28px; }
 }
+
+/* O mu Bu mu */
+.vs-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.vs-option {
+  flex: 1;
+  min-width: 140px;
+  padding: 28px 20px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.vs-option:hover:not(:disabled) { border-color: var(--accent); transform: scale(1.04); }
+.vs-option:disabled { cursor: default; }
+.vs-option.chosen { border-color: var(--accent); background: var(--accent-soft); }
+
+.vs-divider {
+  color: var(--text-soft);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .vs-grid { flex-direction: column; }
+}
+
+/* Search box */
+.search-wrap { margin-top: 28px; display: flex; justify-content: center; }
+
+.search-wrap input {
+  width: 100%;
+  max-width: 420px;
+  padding: 13px 20px;
+  border-radius: 980px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.search-wrap input:focus { outline: 2px solid var(--accent); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.faq-item[open] summary::after { content: "−"; }
+
+.faq-item p {
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Çift Oyunu tabs + şişe çevirme */
+.game-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-tab {
+  padding: 10px 20px;
+  border-radius: 980px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.game-tab:hover { border-color: var(--accent); color: var(--text); }
+.game-tab.active { border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
+
+.bottle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 36px 0;
+}
+
+.bottle {
+  font-size: 64px;
+  color: var(--accent);
+  display: inline-block;
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}

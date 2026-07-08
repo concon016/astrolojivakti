@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mu Bu mu? — canastro</title>
+<meta name="description" content="İki seçenekten birini seç, topluluğun tercihini gör.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">can<span class="accent">astro</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="burclar.html">Burçlar</a>
+      <a href="uyum.html">Uyum Testi</a>
+      <a href="kisilik-testi.html">Kişilik Testi</a>
+      <a href="numeroloji.html">Numeroloji</a>
+      <a href="ask-hesaplama.html">Aşk Uyumu</a>
+      <a href="ruya-tabiri.html">Rüya Tabiri</a>
+      <a href="tarot.html">Tarot</a>
+      <a href="sevgi-dili.html">Sevgi Dili</a>
+      <a href="cift-oyunu.html">Çift Oyunu</a>
+      <a href="bu-mu-su-mu.html" class="active">O mu Bu mu?</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="burclar.html">Burçlar</a>
+    <a href="uyum.html">Uyum Testi</a>
+    <a href="kisilik-testi.html">Kişilik Testi</a>
+    <a href="numeroloji.html">Numeroloji</a>
+    <a href="ask-hesaplama.html">Aşk Uyumu</a>
+    <a href="ruya-tabiri.html">Rüya Tabiri</a>
+    <a href="tarot.html">Tarot</a>
+    <a href="sevgi-dili.html">Sevgi Dili</a>
+    <a href="cift-oyunu.html">Çift Oyunu</a>
+    <a href="bu-mu-su-mu.html" class="active">O mu Bu mu?</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="reveal">
+      <h1>O mu, <span class="accent">Bu mu?</span></h1>
+      <p>Birini seç, topluluğun ne düşündüğünü gör.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner" style="max-width:640px;text-align:center">
+      <div class="vs-grid" id="vsGrid">
+        <button class="vs-option" id="optA"></button>
+        <span class="vs-divider">veya</span>
+        <button class="vs-option" id="optB"></button>
+      </div>
+
+      <div class="result-card" id="resultCard" style="margin-top:28px">
+        <div id="resultContent"></div>
+        <button class="btn btn-secondary" id="nextBtn" style="margin-top:20px">Sıradaki</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 canastro · Eğlence amaçlıdır, bilimsel bir dayanağı yoktur.
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script>
+  const optA = document.getElementById("optA");
+  const optB = document.getElementById("optB");
+  const resultCard = document.getElementById("resultCard");
+  const resultContent = document.getElementById("resultContent");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let order = shuffle([...BU_MU_SU_MU_PAIRS.keys()]);
+  let pos = 0;
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function loadPair() {
+    resultCard.classList.remove("visible");
+    optA.disabled = false;
+    optB.disabled = false;
+    optA.classList.remove("chosen");
+    optB.classList.remove("chosen");
+
+    const pair = BU_MU_SU_MU_PAIRS[order[pos]];
+    optA.textContent = pair.a;
+    optB.textContent = pair.b;
+  }
+
+  function choose(pickedEl, pickedLabel) {
+    if (optA.disabled) return;
+    optA.disabled = true;
+    optB.disabled = true;
+    pickedEl.classList.add("chosen");
+
+    const pairIndex = order[pos];
+    const pair = BU_MU_SU_MU_PAIRS[pairIndex];
+    const pctA = seededInt("vs" + pairIndex, 28, 72);
+    const pctB = 100 - pctA;
+
+    resultContent.innerHTML =
+      "<div style='margin-bottom:14px'>" +
+      "<div style='display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px'>" +
+      "<span>" + pair.a + "</span><span style='color:var(--accent)'>%" + pctA + "</span>" +
+      "</div>" +
+      "<div style='height:8px;background:var(--bg-soft);border-radius:980px;overflow:hidden'>" +
+      "<div style='height:100%;width:" + pctA + "%;background:var(--accent)'></div>" +
+      "</div></div>" +
+      "<div>" +
+      "<div style='display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px'>" +
+      "<span>" + pair.b + "</span><span style='color:var(--accent2)'>%" + pctB + "</span>" +
+      "</div>" +
+      "<div style='height:8px;background:var(--bg-soft);border-radius:980px;overflow:hidden'>" +
+      "<div style='height:100%;width:" + pctB + "%;background:var(--accent2)'></div>" +
+      "</div></div>" +
+      "<p style='margin-top:14px;color:var(--text-soft);font-size:13px'>Sen <strong style='color:var(--text)'>" + pickedLabel + "</strong>'i seçtin.</p>";
+
+    resultCard.classList.add("visible");
+  }
+
+  optA.addEventListener("click", () => choose(optA, optA.textContent));
+  optB.addEventListener("click", () => choose(optB, optB.textContent));
+
+  nextBtn.addEventListener("click", () => {
+    pos++;
+    if (pos >= order.length) {
+      order = shuffle([...BU_MU_SU_MU_PAIRS.keys()]);
+      pos = 0;
+    }
+    loadPair();
+  });
+
+  loadPair();
+</script>
+</body>
+</html>

@@ -23,6 +23,7 @@
       <a href="tarot.html">Tarot</a>
       <a href="sevgi-dili.html">Sevgi Dili</a>
       <a href="cift-oyunu.html">Çift Oyunu</a>
+      <a href="bu-mu-su-mu.html">O mu Bu mu?</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü">
       <span></span><span></span><span></span>
@@ -39,6 +40,7 @@
       <a href="tarot.html">Tarot</a>
       <a href="sevgi-dili.html">Sevgi Dili</a>
       <a href="cift-oyunu.html">Çift Oyunu</a>
+      <a href="bu-mu-su-mu.html">O mu Bu mu?</a>
   </div>
 </header>
 
@@ -49,76 +51,146 @@
     <div class="reveal">
       <h1>Yıldızlar sana ne<br><span class="accent">anlatıyor?</span></h1>
       <p>Günlük burç yorumların, uyum testlerin, numerolojin ve daha fazlası — kozmosun eğlenceli tarafı burada.</p>
+      <div class="search-wrap">
+        <input type="text" id="siteSearch" placeholder="Ara: burç, tarot, uyum testi, rüya...">
+      </div>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="feature-grid">
 
-        <a href="burclar.html" class="feature-card reveal">
+      <div class="section-head" style="text-align:left;margin-bottom:24px">
+        <h2 style="font-size:22px">Fal &amp; Analiz</h2>
+      </div>
+      <div class="feature-grid" id="groupFal">
+
+        <a href="burclar.html" class="feature-card reveal" data-search="burç günlük yorum burclar aşk kariyer enerji">
           <div class="feature-icon">✦</div>
           <h3>Günlük Burç Yorumu</h3>
           <p>12 burç için her gün yenilenen aşk, kariyer ve enerji yorumları.</p>
           <span class="feature-link">Yorumunu gör →</span>
         </a>
 
-        <a href="uyum.html" class="feature-card reveal">
-          <div class="feature-icon">☾</div>
-          <h3>Burç Uyumu</h3>
-          <p>İki burcu seç, aranızdaki kozmik uyum yüzdesini keşfet.</p>
-          <span class="feature-link">Uyumu test et →</span>
-        </a>
-
-        <a href="kisilik-testi.html" class="feature-card reveal">
-          <div class="feature-icon">☉</div>
-          <h3>Kozmik Kişilik Testi</h3>
-          <p>8 soruluk kısa bir testle hangi kozmik karaktere ait olduğunu öğren.</p>
-          <span class="feature-link">Teste başla →</span>
-        </a>
-
-        <a href="numeroloji.html" class="feature-card reveal">
-          <div class="feature-icon">✧</div>
-          <h3>Numeroloji</h3>
-          <p>İsmin ve doğum tarihinden yaşam yolu sayını ve anlamını hesapla.</p>
-          <span class="feature-link">Sayını hesapla →</span>
-        </a>
-
-        <a href="ask-hesaplama.html" class="feature-card reveal">
-          <div class="feature-icon">♡</div>
-          <h3>Aşk Uyumu</h3>
-          <p>İki ismi gir, aranızdaki eğlenceli uyum yüzdesini gör.</p>
-          <span class="feature-link">Uyumu hesapla →</span>
-        </a>
-
-        <a href="ruya-tabiri.html" class="feature-card reveal">
-          <div class="feature-icon">☽</div>
-          <h3>Rüya Tabiri</h3>
-          <p>Rüyanda gördüğün bir kelimeyi ara, anlamını keşfet.</p>
-          <span class="feature-link">Rüyanı ara →</span>
-        </a>
-
-        <a href="tarot.html" class="feature-card reveal">
+        <a href="tarot.html" class="feature-card reveal" data-search="tarot falı kart açılım aşk kariyer">
           <div class="feature-icon">✵</div>
           <h3>Tarot Falı</h3>
           <p>Geçmiş, şimdi ve gelecek için 3 kartlık bir açılım yap.</p>
           <span class="feature-link">Kartları aç →</span>
         </a>
 
-        <a href="sevgi-dili.html" class="feature-card reveal">
+        <a href="ruya-tabiri.html" class="feature-card reveal" data-search="rüya tabiri yorum sözlük">
+          <div class="feature-icon">☽</div>
+          <h3>Rüya Tabiri</h3>
+          <p>Rüyanda gördüğün bir kelimeyi ara, anlamını keşfet.</p>
+          <span class="feature-link">Rüyanı ara →</span>
+        </a>
+
+        <a href="numeroloji.html" class="feature-card reveal" data-search="numeroloji yaşam yolu sayısı isim">
+          <div class="feature-icon">✧</div>
+          <h3>Numeroloji</h3>
+          <p>İsmin ve doğum tarihinden yaşam yolu sayını ve anlamını hesapla.</p>
+          <span class="feature-link">Sayını hesapla →</span>
+        </a>
+
+      </div>
+
+      <div class="section-head" style="text-align:left;margin:56px 0 24px">
+        <h2 style="font-size:22px">Testler</h2>
+      </div>
+      <div class="feature-grid" id="groupTestler">
+
+        <a href="kisilik-testi.html" class="feature-card reveal" data-search="kişilik testi kozmik karakter">
+          <div class="feature-icon">☉</div>
+          <h3>Kozmik Kişilik Testi</h3>
+          <p>8 soruluk kısa bir testle hangi kozmik karaktere ait olduğunu öğren.</p>
+          <span class="feature-link">Teste başla →</span>
+        </a>
+
+        <a href="sevgi-dili.html" class="feature-card reveal" data-search="sevgi dili testi ilişki">
           <div class="feature-icon">❝</div>
           <h3>Sevgi Dili Testi</h3>
           <p>Sevgiyi nasıl hissettiğini ve ifade ettiğini keşfet.</p>
           <span class="feature-link">Teste başla →</span>
         </a>
 
-        <a href="cift-oyunu.html" class="feature-card reveal">
+        <a href="uyum.html" class="feature-card reveal" data-search="burç uyumu test yüzde">
+          <div class="feature-icon">☾</div>
+          <h3>Burç Uyumu</h3>
+          <p>İki burcu seç, aranızdaki kozmik uyum yüzdesini keşfet.</p>
+          <span class="feature-link">Uyumu test et →</span>
+        </a>
+
+        <a href="ask-hesaplama.html" class="feature-card reveal" data-search="aşk uyumu hesaplama isim">
+          <div class="feature-icon">♡</div>
+          <h3>Aşk Uyumu</h3>
+          <p>İki ismi gir, aranızdaki eğlenceli uyum yüzdesini gör.</p>
+          <span class="feature-link">Uyumu hesapla →</span>
+        </a>
+
+      </div>
+
+      <div class="section-head" style="text-align:left;margin:56px 0 24px">
+        <h2 style="font-size:22px">Eğlence &amp; Oyunlar</h2>
+      </div>
+      <div class="feature-grid" id="groupOyun">
+
+        <a href="cift-oyunu.html" class="feature-card reveal" data-search="çift oyunu doğruluk cesaret şişe çevirme">
           <div class="feature-icon">⚄</div>
           <h3>Çift Oyunu</h3>
-          <p>Doğruluk mu Cesaret mi? Partnerinle eğlenceli bir tur oynayın.</p>
+          <p>Doğruluk mu Cesaret mi, Şişe Çevirme — partnerinle eğlenceli bir tur oynayın.</p>
           <span class="feature-link">Oyuna başla →</span>
         </a>
 
+        <a href="bu-mu-su-mu.html" class="feature-card reveal" data-search="o mu bu mu turnuva tercih">
+          <div class="feature-icon">◐</div>
+          <h3>O mu Bu mu?</h3>
+          <p>Birini seç, topluluğun ne düşündüğünü gör.</p>
+          <span class="feature-link">Seçime başla →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="sss">
+    <div class="section-inner" style="max-width:760px">
+      <div class="section-head">
+        <h2>Sık Sorulan Sorular</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>canastro'daki sonuçlar gerçek mi?</summary>
+          <p>Hayır. Burç yorumları, tarot, numeroloji ve testler tamamen eğlence amaçlıdır, bilimsel bir dayanağı yoktur.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Günlük burç yorumu her gün değişiyor mu?</summary>
+          <p>Evet, her burcun günlük yorumu tarihe göre otomatik değişir ve gün boyunca aynı kalır.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Uyum testlerindeki yüzdeler nasıl hesaplanıyor?</summary>
+          <p>Girdiğin isimlere/burçlara göre sabit bir algoritmayla hesaplanır — aynı çift her zaman aynı sonucu alır, rastgele değildir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Verilerim (isim, doğum tarihi) kaydediliyor mu?</summary>
+          <p>Hayır, hiçbir form verisi sunucuya gönderilmez ya da saklanmaz. Tüm hesaplamalar tarayıcında, cihazında yapılır.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Tarot kartları gerçekten rastgele mi çekiliyor?</summary>
+          <p>Evet, her açılımda 3 kart tamamen rastgele seçilir ve %50 ihtimalle ters gelebilir — istediğin kadar tekrar çekebilirsin.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Sitede reklam ya da ücretli bir özellik var mı?</summary>
+          <p>Hayır, canastro tamamen ücretsizdir, hiçbir özellik için ödeme gerekmez.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Mekan/restoran önerisi var mı?</summary>
+          <p>Şu an yok — bu, gerçek işletme verisi gerektirdiği için kapsam dışında tutuldu.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Yeni özellik önerebilir miyim?</summary>
+          <p>canastro sürekli gelişen bir proje, yeni test ve oyunlar zamanla eklenmeye devam edecek.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -131,5 +203,25 @@
 
 <script src="data.js"></script>
 <script src="script.js"></script>
+<script>
+  const siteSearch = document.getElementById("siteSearch");
+  const groups = [document.getElementById("groupFal"), document.getElementById("groupTestler"), document.getElementById("groupOyun")];
+
+  siteSearch.addEventListener("input", () => {
+    const q = siteSearch.value.trim().toLocaleLowerCase("tr-TR");
+
+    groups.forEach((group) => {
+      let anyVisible = false;
+      group.querySelectorAll(".feature-card").forEach((card) => {
+        const haystack = (card.dataset.search || "").toLocaleLowerCase("tr-TR");
+        const match = !q || haystack.includes(q);
+        card.style.display = match ? "" : "none";
+        if (match) anyVisible = true;
+      });
+      group.previousElementSibling.style.display = anyVisible ? "" : "none";
+      group.style.display = anyVisible ? "" : "none";
+    });
+  });
+</script>
 </body>
 </html>
